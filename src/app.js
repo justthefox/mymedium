@@ -1,6 +1,6 @@
 import React, { StrictMode } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import Header from './components/header/header';
+import Header from './components/header';
 import Routes from './routes';
 import { UserProvider } from './context/user-context';
 import UserChecker from './components/user-checker';

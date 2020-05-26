@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import { ROUTES } from './constants';
 import GlobalFeed from '../pages/global-feed';
 import Article from '../pages/article';
-import Authentication from '../pages/authentication';
+import Authentication from '../pages/auth';
 
 export default () => {
   return (
@@ -11,7 +11,7 @@ export default () => {
       <Route path={ROUTES.HOME} component={GlobalFeed} exact />
       <Route path={ROUTES.LOGIN} component={Authentication} />
       <Route path={ROUTES.REGISTER} component={Authentication} />
-      <Route path={ROUTES.ARTICLES} component={Article} />
+      <Route path={ROUTES.ARTICLES.ROOT} component={Article} />
     </Switch>
   );
 };

@@ -1,6 +1,10 @@
 export const ROUTES = {
   HOME: '/',
-  ARTICLES: '/articles/:slug',
   LOGIN: '/login',
   REGISTER: '/register',
+  ARTICLES: {
+    ROOT: '/articles',
+    ARTICLE: '/articles/:slug',
+  },
+  PROFILE: '/profiles/:username',
 };

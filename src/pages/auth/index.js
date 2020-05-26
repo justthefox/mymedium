@@ -1,8 +1,8 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import useFetch from '../../hooks/use-fetch';
 import useLocalStorage from '../../hooks/use-local-storage';
-import { UserContext } from '../../context/user-context';
+import { useUserContext } from '../../context/user-context';
 import { ROUTES } from '../../routes/constants';
 import ErrorMessages from './components/error-messages';
 
@@ -19,7 +19,7 @@ const Authentication = (props) => {
   const [isSuccessfullSubmit, setIsSuccessfullSubmit] = useState(false);
   const [{ isLoading, response, error }, doFetch] = useFetch(apiUrl);
   const [, setToken] = useLocalStorage('token');
-  const [, setUserState] = useContext(UserContext);
+  const [, setUserState] = useUserContext();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -65,6 +65,7 @@ const Authentication = (props) => {
                 <fieldset className="form-group">
                   <input
                     type="text"
+                    name="username"
                     className="form-control form-control-lg"
                     placeholder="Username"
                     value={username}
@@ -75,6 +76,7 @@ const Authentication = (props) => {
               <fieldset className="form-group">
                 <input
                   type="email"
+                  name="email"
                   className="form-control form-control-lg"
                   placeholder="Email"
                   autoFocus
@@ -85,6 +87,7 @@ const Authentication = (props) => {
               <fieldset className="form-group">
                 <input
                   type="password"
+                  name="password"
                   className="form-control form-control-lg"
                   placeholder="Password"
                   value={password}
@@ -96,7 +99,7 @@ const Authentication = (props) => {
                 type="submit"
                 disabled={isLoading}
               >
-                {pageTitle}
+                Go
               </button>
             </form>
           </div>

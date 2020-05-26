@@ -1,7 +1,6 @@
-import React, {createContext, useState} from 'react';
+import React, {createContext, useContext, useState} from 'react';
 
 export const UserContext = createContext([{}, ()=>{}]);
-
 export const UserProvider = ({children}) => {
   const [state, setState] = useState({
     isLoading: false,
@@ -14,3 +13,5 @@ export const UserProvider = ({children}) => {
     </UserContext.Provider>
   );
 };
+
+export const useUserContext = () => useContext(UserContext);
