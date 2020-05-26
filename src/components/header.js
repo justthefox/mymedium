@@ -41,7 +41,7 @@ const Header = () => {
             {isLoggedIn && (
               <>
                 <li className="nav-item">
-                  <NavLink to="/articles/new" className="nav-link">
+                  <NavLink to={ROUTES.ARTICLE.NEW} className="nav-link">
                     New Post
                   </NavLink>
                 </li>
@@ -52,7 +52,7 @@ const Header = () => {
                 </li>
                 <li className="nav-item">
                   <NavLink
-                    to={`/profiles/${currentUser?.username}`}
+                    to={`/profile/${currentUser?.username}`}
                     className="nav-link d-flex align-items-center"
                   >
                     <span

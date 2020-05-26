@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import useFetch from '../../hooks/use-fetch';
-import Loader from '../../components/loader';
-import ErrorMessage from '../../components/notifications';
-import TagList from '../../components/tag-list';
 import { useUserContext } from '../../context/user-context';
+import Loader from '../../components/loader';
 import Notifications from '../../components/notifications';
+import TagList from '../../components/tag-list';
 
 const Article = (props) => {
   const slug = props.match.params.slug;
@@ -30,8 +29,8 @@ const Article = (props) => {
     }
 
     return (
-      userState.currentUser.username ===
-      fetchArticleResponse.article.author.username
+      userState?.currentUser?.username ===
+      fetchArticleResponse?.article?.author?.username
     );
   };
 
@@ -62,34 +61,39 @@ const Article = (props) => {
       <div className="bg-light text-dark py-5 mb-4">
         {!fetchArticleIsLoading && fetchArticleResponse && (
           <div className="container">
-            <h1 className="h2 mb-3">{fetchArticleResponse?.article?.title}</h1>
-            <div className="d-flex align-items-center">
-              <Link
-                to={`/profiles/${fetchArticleResponse?.article?.author?.username}`}
-                className="d-inline-block rounded-circle mr-2 overflow-hidden bg-secondary"
-                style={{ width: 40, height: 40 }}
-              >
-                <img
-                  src={fetchArticleResponse?.article?.author?.image}
-                  alt=""
-                  className="img-fluid"
-                />
-              </Link>
-              <div>
+            <h1 className="h2 mb-3 ">{fetchArticleResponse?.article?.title}</h1>
+            <div className="d-flex justify-content-between">
+              <div className="d-flex align-items-center">
                 <Link
                   to={`/profiles/${fetchArticleResponse?.article?.author?.username}`}
+                  className="d-inline-block rounded-circle mr-2 overflow-hidden bg-secondary"
+                  style={{ width: 40, height: 40 }}
                 >
-                  {fetchArticleResponse?.article?.author?.username}
+                  <img
+                    src={fetchArticleResponse?.article?.author?.image}
+                    alt=""
+                    className="img-fluid"
+                  />
                 </Link>
-                <p className="text-muted mb-0" style={{ fontSize: '0.8rem' }}>
-                  {fetchArticleResponse?.article?.createdAt}
-                </p>
+                <div>
+                  <Link
+                    to={`/profiles/${fetchArticleResponse?.article?.author?.username}`}
+                  >
+                    {fetchArticleResponse?.article?.author?.username}
+                  </Link>
+                  <span
+                    className="d-block text-muted mb-0"
+                    style={{ fontSize: '0.8rem' }}
+                  >
+                    {fetchArticleResponse?.article?.createdAt}
+                  </span>
+                </div>
               </div>
               {isAuthor() && (
-                <span>
+                <div className="ml-3">
                   <Link
                     to={`/articles/${fetchArticleResponse?.article?.slug}/edit`}
-                    className="btn btn-outline-secondary btn-sm"
+                    className="btn btn-outline-secondary btn-sm mr-2"
                   >
                     Edit Article
                   </Link>
@@ -99,7 +103,7 @@ const Article = (props) => {
                   >
                     Delete Article
                   </button>
-                </span>
+                </div>
               )}
             </div>
           </div>
@@ -118,7 +122,6 @@ const Article = (props) => {
             <TagList tags={fetchArticleResponse.article.tagList} />
           </div>
         )}
-        <hr />
       </div>
     </div>
   );

@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
 import { stringify } from 'query-string';
 import useFetch from '../../../hooks/use-fetch';
-import { ROUTES } from '../../../routes/constants';
 import { limit, getPaginator } from '../../../utils/utils';
 import FeedPage from '../feed';
 
-const YourFeed  = ({ location, match }) => {
+const YourFeed = ({ location }) => {
   const { offset, currentPage } = getPaginator(location.search);
   const stringifiedParams = stringify({
     limit,
