@@ -13,7 +13,7 @@ export default () => {
       <Route path={ROUTES.HOME} component={GlobalFeed} exact />
       <Route path={ROUTES.FEED} component={YourFeed} />
       <Route path={ROUTES.TAGS.TAG} component={TagFeed} />
-      <Route path={ROUTES.ARTICLES.ROOT} component={Article} />
+      <Route path={ROUTES.ARTICLES} component={Article} />
       <Route path={ROUTES.LOGIN} component={Authentication} />
       <Route path={ROUTES.REGISTER} component={Authentication} />
       <Redirect to={ROUTES.HOME} />

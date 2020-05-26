@@ -4,10 +4,7 @@ export const ROUTES = {
   REGISTER: '/register',
   PROFILE: '/profiles/:username',
   FEED: '/feed',
-  ARTICLES: {
-    ROOT: '/articles',
-    ARTICLE: '/articles/:slug',
-  },
+  ARTICLES: '/articles/:slug',
   TAGS: {
     ROOT: '/tags',
     TAG: '/tags/:tag',

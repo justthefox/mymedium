@@ -17,16 +17,20 @@ const Feed = ({ articles }) => {
           <div key={slug} className="card mb-3">
             <div className="card-body">
               <div className="d-flex align-items-center mb-4">
-                <Link to={`/profiles/${username}`} className="mr-4">
+                <Link
+                  to={`/profiles/${username}`}
+                  className="d-inline-block rounded-circle mr-2 overflow-hidden bg-secondary"
+                  style={{ width: 40, height: 40 }}
+                >
                   <img
                     src={image}
                     alt=""
-                    className="rounded-circle"
+                    className="img-fluid"
                     width={50}
                     height={50}
                   />
                 </Link>
-                <div className="info">
+                <div>
                   <Link to={`/profiles/${username}`}>{username}</Link>
                   <p className="text-muted mb-0" style={{ fontSize: '0.8rem' }}>
                     {createdAt}

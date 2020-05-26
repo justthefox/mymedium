@@ -13,7 +13,7 @@ const Header = () => {
           MyMedium
         </Link>
         <div className="collapse navbar-collapse">
-          <ul className="nav navbar-nav ml-md-auto">
+          <ul className="nav navbar-nav d-flex align-items-center ml-auto">
             <li className="nav-item">
               <NavLink
                 to={ROUTES.HOME}
@@ -53,15 +53,19 @@ const Header = () => {
                 <li className="nav-item">
                   <NavLink
                     to={`/profiles/${currentUser?.username}`}
-                    className="nav-link"
+                    className="nav-link d-flex align-items-center"
                   >
-                    <img
-                      className="d-inline-block rounded-circle mr-2"
-                      width={30}
-                      height={30}
-                      src={currentUser?.image}
-                      alt=""
-                    />
+                    <span
+                      className="d-inline-block rounded-circle mr-2 overflow-hidden bg-secondary"
+                      style={{ width: 25, height: 25 }}
+                    >
+                      <img
+                        src={currentUser?.image}
+                        alt=""
+                        className="img-fluid"
+                      />
+                    </span>
+
                     {currentUser?.username}
                   </NavLink>
                 </li>
