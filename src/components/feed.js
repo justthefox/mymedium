@@ -4,7 +4,7 @@ import TagList from './tag-list';
 
 const Feed = ({ articles }) => {
   return (
-    <div>
+    <div className="mb-5">
       {articles.map(
         ({
           author: { username, image } = {},
@@ -14,24 +14,30 @@ const Feed = ({ articles }) => {
           description,
           tagList,
         }) => (
-          <div className="article-preview" key={slug}>
-            <div className="article-meta">
-              <Link to={`/profiles/${username}`}>
-                <img src={image} alt="" />
-              </Link>
-              <div className="info">
-                <Link to={`/profiles/${username}`} className="author">
-                  {username}
+          <div key={slug} className="card mb-3">
+            <div className="card-body">
+              <div className="d-flex align-items-center mb-4">
+                <Link to={`/profiles/${username}`} className="mr-4">
+                  <img
+                    src={image}
+                    alt=""
+                    className="rounded-circle"
+                    width={50}
+                    height={50}
+                  />
                 </Link>
-                <span className="date">{createdAt}</span>
+                <div className="info">
+                  <Link to={`/profiles/${username}`}>{username}</Link>
+                  <p className="text-muted mb-0" style={{ fontSize: '0.8rem' }}>
+                    {createdAt}
+                  </p>
+                </div>
               </div>
+              <h5 className="card-title">{title}</h5>
+              <p className="card-text">{description}</p>
+              <Link to={`/articles/${slug}`}>Read more</Link>
+              {tagList.length > 0 && <TagList tags={tagList} />}
             </div>
-            <Link to={`/articles/${slug}`} className="preview-link">
-              <h1>{title}</h1>
-              <p>{description}</p>
-              <span>Read more...</span>
-              <TagList tags={tagList} />
-            </Link>
           </div>
         ),
       )}
